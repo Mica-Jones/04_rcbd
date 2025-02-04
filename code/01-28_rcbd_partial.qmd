@@ -105,9 +105,12 @@ Below we change the default to sum-to-zero ("contr.sum") before fitting the mode
 ```{r model}
 # Changing to sum-to-zero contrast
 options(contrasts = c("contr.sum", "contr.poly"))
+rcbd_dfw
 
 # Model fitting
-rcbd_mod 
+rcbd_mod <- lm(yield_kgha ~ rep + nrate_kgha*krate_kgha, # rep + is functionally the only coding difference between a CRD and a RCBD design)
+               data = rcbd_dfw)
+rcbd_mod
 
 # Summary
 summary(rcbd_mod)
